@@ -11,7 +11,7 @@ const authRoutes = require('./Routes/Auth');
 // const adminRoutes = require('./Routes/Admin');
 // const imageUploadRoutes = require('./Routes/imageUploadRoutes');
 // const sleepTrackRoutes = require('./Routes/SleepTrack');
-// const stepTrackRoutes = require('./Routes/StepTrack');
+ const stepTrackRoutes = require('./Routes/StepTrack');
 // const weightTrackRoutes = require('./Routes/WeightTrack');
 // const waterTrackRoutes = require('./Routes/WaterTrack');
 // const workoutTrackRoutes = require('./Routes/WorkoutTrack');
@@ -27,14 +27,7 @@ require('dotenv').config();
 require('./db')
 
 app.use(bodyParser.json());
-const defaultOrigins = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-    'http://localhost:3001',
-    'http://127.0.0.1:3001',
-];
-const envOrigins = (process.env.ALLOWED_ORIGINS || '').split(',').map((origin) => origin.trim());
-const allowedOrigins = [...new Set([...defaultOrigins, ...envOrigins].filter(Boolean))];
+const allowedOrigins = ['http://localhost:3000']; // Add more origins as needed
 
 app.use(
     cors({
